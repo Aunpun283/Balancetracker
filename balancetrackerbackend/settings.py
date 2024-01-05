@@ -48,7 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware"
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware"
 ]
 
 ROOT_URLCONF = 'balancetrackerbackend.urls'
@@ -72,7 +73,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'balancetrackerbackend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Example: Your frontend application's origin
+    "http://localhost:5173", 
+    "http://localhost:5174" # Example: Your frontend application's origin
     
 ]
 # Database
@@ -121,7 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR/'assets'
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

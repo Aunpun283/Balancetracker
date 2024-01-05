@@ -1,7 +1,7 @@
 import pymongo
 from bson import ObjectId, json_util
 from django.http import JsonResponse
-mongoClient = pymongo.MongoClient("mongodb+srv://aunpun:idontlikesharingmypassword@cluster0.0soacqa.mongodb.net/")
+mongoClient = pymongo.MongoClient("mongodb+srv://aunpun:goodpassword@cluster0.0soacqa.mongodb.net/")
 
 balancetracker = mongoClient["balancetracker"]
 trackers = balancetracker["trackers"]
