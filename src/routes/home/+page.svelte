@@ -8,7 +8,7 @@
     onMount(() => {
         onAuthStateChanged(firebase_auth, (user) => {
             const xhr = new XMLHttpRequest();
-xhr.open("GET", `http://localhost:8000/getTrackerFromOwnerId?ownerid=${user.uid}`);
+xhr.open("GET", `https://bltrackerbackenddeploy.onrender.com/getTrackerFromOwnerId?ownerid=${user.uid}`);
 xhr.send();
 xhr.responseType = "json";
 xhr.onload = () => {

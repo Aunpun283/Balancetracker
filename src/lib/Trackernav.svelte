@@ -7,7 +7,7 @@
     
     function changebalance() {
         let money = Number(prompt("What would you like to change your balance to?"))
-        axios.get(`http://localhost:8000/changeBalance?trackerid=${id}&money=${money}`) .then(response => {
+        axios.get(`https://bltrackerbackenddeploy.onrender.com/changeBalance?trackerid=${id}&money=${money}`) .then(response => {
                 // Check if the tracker creation was successful before redirecting
                 if (response.data.STATUS === "SUCCESS") {
                     window.location.reload()

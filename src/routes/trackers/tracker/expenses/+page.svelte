@@ -12,7 +12,7 @@
     onMount(() => { 
     onAuthStateChanged(firebase_auth, (user) => {
         if (user) {
-            fetch(`http://localhost:8000/getTrackerInfo?id=${id}`)
+            fetch(`https://bltrackerbackenddeploy.onrender.com/getTrackerInfo?id=${id}`)
                 .then((response) => response.json())
                 .then((json) => {
                     const pd = JSON.parse(json.DATA);
@@ -70,7 +70,12 @@
                 <th scope="row">{expense.money}</th>
                 <th scope="row">{expense.needwant}</th>
                 <th scope="row">{expense.notes}</th>
-                <th scope="row">{expense.item}</th>
+                {#if expense.item === null}
+                <th scope="row">-</th>       
+               {:else}
+               <th scope="row">{expense.item}</th>          
+                {/if}
+                
             </tr>
             {/each}
             <tr> 

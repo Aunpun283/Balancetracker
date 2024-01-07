@@ -10,12 +10,12 @@
     let expenseType = "Fee"
     let money = 0.00
     let notes = "-"
-    let item = ""
+    let item = "-"
     let needwant = "Need"
     onMount(() => { 
     onAuthStateChanged(firebase_auth, (user) => {
         if (user) {
-            fetch(`http://localhost:8000/getTrackerInfo?id=${id}`)
+            fetch(`https://bltrackerbackenddeploy.onrender.com/getTrackerInfo?id=${id}`)
                 .then((response) => response.json())
                 .then((json) => {
                     const pd = JSON.parse(json.DATA);
@@ -37,7 +37,7 @@
     });
 });
     function AddExpense() {
-        axios.get(`http://localhost:8000/addExpense?et=${expenseType}&em=${money}&en=${notes}&nw=${needwant}&i=${item}&trackerid=${id}`)
+        axios.get(`https://bltrackerbackenddeploy.onrender.com/addExpense?et=${expenseType}&em=${money}&en=${notes}&nw=${needwant}&i=${item}&trackerid=${id}`)
         .then(response => {
                 // Check if the tracker creation was successful before redirecting
                 if (response.data.STATUS === "SUCCESS") {

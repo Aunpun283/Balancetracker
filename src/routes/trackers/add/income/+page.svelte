@@ -10,11 +10,11 @@
     let incomeType = "Salary"
     let money = 0.00
     let notes = "-"
-    let item = ""
+    let item = "-"
     onMount(() => { 
     onAuthStateChanged(firebase_auth, (user) => {
         if (user) {
-            fetch(`http://localhost:8000/getTrackerInfo?id=${id}`)
+            fetch(`https://bltrackerbackenddeploy.onrender.com/getTrackerInfo?id=${id}`)
                 .then((response) => response.json())
                 .then((json) => {
                     const pd = JSON.parse(json.DATA);
@@ -36,7 +36,7 @@
     });
 });
     function addIncome() {
-        axios.get(`http://localhost:8000/addIncome?trackerid=${id}&it=${incomeType}&im=${money}&in=${notes}&item=${item}`)
+        axios.get(`https://bltrackerbackenddeploy.onrender.com/addIncome?trackerid=${id}&it=${incomeType}&im=${money}&in=${notes}&item=${item}`)
         .then(response => {
                 // Check if the tracker creation was successful before redirecting
                 if (response.data.STATUS === "SUCCESS") {

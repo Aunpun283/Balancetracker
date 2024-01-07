@@ -7,20 +7,9 @@
     let currency = "THB"
     function createtracker() {
         onAuthStateChanged(firebase_auth, (user) => {
-            axios.get(`http://localhost:8000/createtracker?name=${name}&currency=${currency}&ownerid=${user.uid}`)
+            axios.get(`https://bltrackerbackenddeploy.onrender.com/createtracker?name=${name}&currency=${currency}&ownerid=${user.uid}`)
             
-            .then(response => {
-                // Check if the tracker creation was successful before redirecting
-                if (response.data.STATUS === "SUCCESS") {
-                    window.location.href = "/home";
-                } else {
-                    alert("Tracker creation failed. Please try again.");
-                }
-            })  
-            .catch(error => {
-                console.error("Error creating tracker:", error);
-                alert("An error occurred while creating the tracker.");
-            });
+            window.location.href = "/home"
         
         })
 
