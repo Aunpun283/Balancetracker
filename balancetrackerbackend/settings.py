@@ -74,8 +74,8 @@ WSGI_APPLICATION = 'balancetrackerbackend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", 
-    "http://localhost:5174" # Example: Your frontend application's origin
-    
+    "http://localhost:5174", # Example: Your frontend application's origin
+    "https://bltrackerdeploy.onrender.com"
 ]
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
