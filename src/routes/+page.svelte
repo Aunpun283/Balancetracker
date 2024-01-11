@@ -26,11 +26,11 @@
             <input type="password" required placeholder="Your password" bind:value={pwi}  class="form-control">
         </div>
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-success">Sign in</button>
         </div>
         <hr>
         <div class="d-grid gap-2">
-            <a class="btn btn-light" href="https://authenthication-2ba09.firebaseapp.com/" target="_blank">Sign up (KAccount)</a>
+            <a class="btn btn-primary" href="https://authenthication-2ba09.firebaseapp.com/" target="_blank">Sign up (KAccount)</a>
         </div>
     </form>
 </div>
