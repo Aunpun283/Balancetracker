@@ -58,9 +58,9 @@
 
 <div id="div-center">
     <form on:submit|preventDefault={AddExpense}>
-        <h1>Add income</h1>
+        <h1>Add expense</h1>
         <div class="mb-3">
-            <label for="ti" class="form-label">Type of Income:</label>
+            <label for="ti" class="form-label">Type of Expense:</label>
             <select id="ti" class="form-select" bind:value={expenseType}>
                 <option value="Fee">Fee</option>
                 <option value="Paying off debt">Paying off debt</option>
@@ -90,7 +90,7 @@
         </div>
         {#if expenseType == "Purchase"}
         <div class="mb">
-            <label for="ii" class="form-label">Item (Sales):</label>
+            <label for="ii" class="form-label">Item (Purchase):</label>
             <input type="text" class="form-control" id="ii" placeholder="Your item" bind:value={item}>
         </div>
         {/if}
