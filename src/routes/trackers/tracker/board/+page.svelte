@@ -6,9 +6,10 @@
     const id = $page.data.id
     import { onMount } from "svelte";
     import { onAuthStateChanged } from "@firebase/auth";
-    let expenses = []
+    let acts = []
     let balance
     let currency
+    let tracker
     onMount(() => { 
     onAuthStateChanged(firebase_auth, (user) => {
         if (user) {
@@ -16,11 +17,11 @@
                 .then((response) => response.json())
                 .then((json) => {
                     const pd = JSON.parse(json.DATA);
-                    const expense1 = pd[0].incomes;
+                    const act = pd[0].act;
                     const balances = pd[0].balance;
                     const currencies = pd[0].currency;
-
-                    console.log(pd, expense1, balances, currencies);
+                    const name = pd[0].name
+                    console.log(pd, act, balances, currencies);
 
                     if (pd[0].ownerid === user.uid) {
                   
@@ -28,9 +29,10 @@
                         window.location.href = "/home"
                     }
 
-                    expenses = expense1;
+                    acts = act;
                     balance = balances;
                     currency = currencies;
+                    tracker = name
                 })
                 .catch((error) => {
                     console.error("Error fetching tracker information:", error);
@@ -47,7 +49,8 @@
 
 <Trackernav id={id}/>
 <div id="div-center">
-    <h1 class="text-center">Incomes board</h1>
+    <h1 class="text-center">{tracker} Tracker</h1>
+    <h1 class="text-center">Payment/Income board</h1>
     {#if balance  >= 0}
     <h1 class="text-center">You have {balance} {currency}</h1>
     {:else}
@@ -56,31 +59,26 @@
     >
         <thead>
             <tr>
-                <th scope="col">Type</th>
+                <th scope="col">Payment/Income</th>
                 <th scope="col">Money</th>
-                <th scope="col">notes</th>
-                <th scope="col">Item (Sale)</th>
+            
             </tr>
         </thead>
 
         <tbody>
-            {#each expenses as expense}
+            {#each acts as act}
             <tr> 
-                <th scope="row">{expense.type}</th>
-                <th scope="row">{expense.money}</th>
-                <th scope="row">{expense.notes}</th>
-                {#if expense.item === null}
-                <th scope="row">-</th>       
-               {:else}
-               <th scope="row">{expense.item}</th>          
-                {/if}
+                <th scope="row">{act.type}</th>
+                <th scope="row">{act.money}</th>
+            
+               
             </tr>
             {/each}
             <tr> 
                 <th scope="row">Total:</th>
-                <th scope="row">⠀</th>
-                <th scope="row">{balance}</th>
-                <th scope="row">{currency}</th>
+            
+                <th scope="row">{balance} {currency}</th>
+              
             </tr>
         </tbody>
     </table>

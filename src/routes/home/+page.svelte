@@ -36,7 +36,7 @@ xhr.onload = () => {
         {#if trackers.length > 0}
             {#each trackers as tracker (tracker._id)}
                 <li class="list-group-item">
-                  <a href="/trackers/tracker/incomes?id={tracker._id.$oid}">{tracker.name}</a>
+                  <a href="/trackers/tracker/board?id={tracker._id.$oid}">{tracker.name}</a>
                 </li>
             {/each}
             {:else}

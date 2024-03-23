@@ -8,9 +8,11 @@
     }
 </script>
 
-<nav class="navbar navbar-dark bg-dark" data-bs-theme="dark">
+<nav class="navbar navbar-primary bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-        <a href="/home" class="navbar-brand">Second try balance tracker</a>
+        <a href="/home" class="navbar-brand">
+            <img src="/logo.svg" height="50"width="100" alt="">
+            Balance tracker</a>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="/trackers/create" class="nav-link active" active>Create a new tracker</a>

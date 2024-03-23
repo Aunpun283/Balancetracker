@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="100" height="100">
+  <!-- Define the linear gradient -->
+  <!-- This creates a linear gradient with two stops: one at the beginning with a pink color and another at the end with a purple color. -->
+  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#f737e5"/>
+    <stop offset="100%" stop-color="#941bf6"/>
+  </linearGradient>
+  
+  <!-- Square with rounded corners -->
+  <!-- This creates a black square with rounded corners and a size of 50 units by 50 units. -->
+  <rect width="50" height="50" rx="10" ry="10" fill="black"/>
+  
+  <!-- Text inside the square -->
+  <!-- This places the letter "B" in the center of the square with white color and a font size of 30 units. -->
+  <text x="25%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="30" fill="white">B</text>
+</svg>

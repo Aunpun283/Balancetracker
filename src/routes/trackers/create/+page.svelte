@@ -7,7 +7,7 @@
     let currency = "THB"
     function createtracker() {
         onAuthStateChanged(firebase_auth, (user) => {
-            axios.get(`https://bltrackerbackenddeploy.onrender.com/createtracker?name=${name}&currency=${currency}&ownerid=${user.uid}`)
+            axios.get(`http://localhost:8000/createtracker?name=${name}&currency=${currency}&ownerid=${user.uid}`)
             
             window.location.href = "/home"
         
