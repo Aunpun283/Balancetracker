@@ -29,7 +29,7 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" >Settings</a> </li>
+                <a class="nav-link active" href="/trackers/tracker/settings/general?id={id}" >Settings</a> </li>
         </ul>
        
     </div>

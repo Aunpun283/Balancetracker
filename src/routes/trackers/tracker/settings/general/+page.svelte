@@ -1,7 +1,7 @@
  
 <script>
-    import Trackernav from "../../../../lib/Trackernav.svelte";
-    import firebase_auth from "../../../../lib/auth";
+    import Trackernav from "../../../../../lib/Trackernav.svelte";
+    import firebase_auth from "../../../../../lib/auth";
     import { page } from "$app/stores"
     const id = $page.data.id
     import { onMount } from "svelte";
@@ -48,38 +48,17 @@
 </script>
 
 <Trackernav id={id}/>
-<div id="div-center">
-    <h1 class="text-center">{tracker}</h1>
-    <h1 class="text-center">Payment/Income board</h1>
-    {#if balance  >= 0}
-    <h1 class="text-center">You have {balance} {currency}</h1>
-    {:else}
-    <h1 class="text-center"  >You have <span style="color: red;">{balance}</span> {currency}</h1>    {/if}
-    <table class="table table-striped"
-    >
-        <thead>
-            <tr>
-                <th scope="col">Payment/Income</th>
-                <th scope="col">Money</th>
-            
-            </tr>
-        </thead>
 
-        <tbody>
-            {#each acts as act}
-            <tr> 
-                <th scope="row">{act.type}</th>
-                <th scope="row">{act.money}</th>
-            
-               
-            </tr>
-            {/each}
-            <tr> 
-                <th scope="row">Total:</th>
-            
-                <th scope="row">{balance} {currency}</th>
-              
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-group">
+                <li class="list-group-item">General</li>
+            </ul>
+        </div>
+        <div class="col-md-4 border rounded" style="width: 32rem;">
+            <h1>{tracker} - Settings</h1>
+        </div>
+    </div>
 </div>

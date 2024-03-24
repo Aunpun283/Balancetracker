@@ -29,20 +29,38 @@ xhr.onload = () => {
     
 </script>
 
+<!-- Import statements and script omitted for brevity -->
+
+<style>
+  #container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 columns */
+      gap: 20px; /* Gap between cards */
+      margin-top: 50px; /* Ensure space below navbar */
+  }
+
+  .card {
+      width: 100%; /* Each card takes up full width of its grid cell */
+  }
+</style>
+
 <Appnav />
 
-<div id="div-center">
-    <ul class="list-group">
-        {#if trackers.length > 0}
-            {#each trackers as tracker (tracker._id)}
-                <li class="list-group-item">
-                  <a href="/trackers/tracker/board?id={tracker._id.$oid}">{tracker.name}</a>
-                </li>
-            {/each}
-            {:else}
-            <h1>No trackers found</h1>
-        {/if}
-
-    </ul>
+<div id="container">
+  {#if trackers.length > 0}
+      {#each trackers as tracker (tracker._id)}
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title">{tracker.name}</h5>
+                  <div class="d-grid gap-2">
+                    <a href="/trackers/tracker/board?id={tracker._id.$oid}" class="btn btn-primary">{tracker.name}</a>
+                  </div>
+              </div>
+          </div>
+      {/each}
+  {:else}
+      <div id="div-center">
+        <h1>No trackers found</h1>
+      </div>
+  {/if}
 </div>
-
