@@ -99,3 +99,16 @@ def deletetracker(request):
     except Exception as e:
         return JsonResponse({"STATUS":"FAILED","ERROR":str(e)})
     return JsonResponse({"STATUS":"SUCCESS"})
+def chagetracker(request):
+    trackerid = request.GET.get("trackerid")
+    balance = request.GET.get("bala")
+    currency = request.GET.get("curr")
+    name = request.GET.get("name")
+    query = {"_id":ObjectId(trackerid)}
+    newvalues = {"$set":{"balance":balance,"currency":currency,"name":name}}
+    try:
+        data = trackers.update_one(query,newvalues)
+    
+    except Exception as e:
+        return JsonResponse({"STATUS":"FAILED","ERROR":str(e)})
+    return JsonResponse({"STATUS":"SUCCESS"})

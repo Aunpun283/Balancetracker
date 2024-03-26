@@ -25,6 +25,7 @@ urlpatterns = [
     path("addExpense",routes.addExpense),
     path("addIncome",routes.addIncome),
     path("changeBalance",routes.changeBalance),
-    path("deletetracker",routes.deletetracker)
+    path("deletetracker",routes.deletetracker),
+    path("chagetracker",routes.chagetracker)
 
 ]
