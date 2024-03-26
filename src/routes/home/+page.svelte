@@ -8,8 +8,7 @@
     function createtracker() {
         onAuthStateChanged(firebase_auth, (user) => {
             axios.get(`https://balancetrackerbackend.onrender.com/createtracker?name=${name}&currency=${currency}&ownerid=${user.uid}`)
-
-          alert("00")
+ 
             
             window.location.reload()
         
