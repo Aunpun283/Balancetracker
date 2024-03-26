@@ -6,10 +6,35 @@
     const id = $page.data.id
     import { onMount } from "svelte";
     import { onAuthStateChanged } from "@firebase/auth";
+    import axios from "axios";
     let acts = []
     let balance
     let currency
     let tracker
+    let tracker1
+    function changesettings() {
+        axios.get(`https://balancetrackerbackend.onrender.com/chagetracker?trackerid=${id}&name=${tracker1}&curr=${currency}&bala=${balance}`)
+      
+        window.location.reload()
+    }
+    function deletetracker(event) {
+            event.preventDefault()
+        const confirmation = confirm("Are you sure you want to delete this tracker? \nWARNING: THIS IS IRREVERSIBLE!")
+        if (confirmation) {
+            axios.get(`https://balancetrackerbackend.onrender.com/deletetracker?trackerid=${id}`) .then(response => {
+                // Check if the tracker creation was successful before redirecting
+                if (response.data.STATUS === "SUCCESS") {
+                    window.location.href = "/home"
+                } else {
+                    alert(response.data.ERROR);
+                }
+            })
+            .catch(error => {
+                console.error("Error creating tracker:", error);
+                alert("An error occurred while changing balance.");
+            });
+        }
+    }
     onMount(() => { 
     onAuthStateChanged(firebase_auth, (user) => {
         if (user) {
@@ -21,6 +46,7 @@
                     const balances = pd[0].balance;
                     const currencies = pd[0].currency;
                     const name = pd[0].name
+                    tracker1 = name
                     console.log(pd, act, balances, currencies);
 
                     if (pd[0].ownerid === user.uid) {
@@ -57,16 +83,16 @@
                 <li class="list-group-item">General</li>
             </ul>
         </div>
-        <div class="col-md-4 border rounded" style="width: 32rem;">
+        <div class="col-md-4 border rounded"  >
             <h1>{tracker} - Settings</h1>
-            <form>
+            <form on:submit|preventDefault={changesettings}>
                 <div class="mb-3">
                     <label for="ni" class="form-label">Name:</label>
-                    <input type="text" value="{tracker}" class="form-control">
+                    <input type="text" bind:value="{tracker1}"  class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="ci" class="form-label">Currency:</label>
-                    <select id="ci" value="{currency}" class="form-select">
+                    <select id="ci"  bind:value="{currency}" class="form-select" required>
                         <option value="USD">United States Dollar (USD)</option>
     <option value="CAD">Canadian Dollar (CAD)</option>
     <option value="MXN">Mexican Peso (MXN)</option>
@@ -203,17 +229,18 @@
                 </div>
                 <div class="mb-3">
                     <label for="bi" class="form-label">Balance</label>
-                    <input type="number" step="0.1" value="{balance}" class="form-control">
+                    <input type="number" step="0.1" bind:value="{balance}" required class="form-control">
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-success" type="submit" >Change settings</button>
+                    <button type="submit" class="btn btn-success"   >Change settings</button>
                 </div>
                 
                 <hr>
                  
             </form>
             <div class="d-grid gap-2">
-                <button class="btn btn-danger" >Delete tracker</button>
+                <button class="btn btn-danger" on:click={deletetracker}>Delete tracker</button>
+
             </div>
             <br>
         </div>
