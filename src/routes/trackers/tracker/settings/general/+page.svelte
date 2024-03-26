@@ -13,7 +13,7 @@
     onMount(() => { 
     onAuthStateChanged(firebase_auth, (user) => {
         if (user) {
-            fetch(`https://bltrackerbackenddeploy.onrender.com/getTrackerInfo?id=${id}`)
+            fetch(`https://balancetrackerbackend.onrender.com/getTrackerInfo?id=${id}`)
                 .then((response) => response.json())
                 .then((json) => {
                     const pd = JSON.parse(json.DATA);
@@ -59,6 +59,7 @@
         </div>
         <div class="col-md-4 border rounded" style="width: 32rem;">
             <h1>{tracker} - Settings</h1>
+            <form></form>
         </div>
     </div>
 </div>

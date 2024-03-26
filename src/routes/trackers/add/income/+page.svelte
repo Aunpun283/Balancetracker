@@ -13,7 +13,7 @@
     onMount(() => { 
     onAuthStateChanged(firebase_auth, (user) => {
         if (user) {
-            fetch(`https://bltrackerbackenddeploy.onrender.com/getTrackerInfo?id=${id}`)
+            fetch(`https://balancetrackerbackend.onrender.com/getTrackerInfo?id=${id}`)
                 .then((response) => response.json())
                 .then((json) => {
                     const pd = JSON.parse(json.DATA);
@@ -35,7 +35,7 @@
     });
 });
     function addIncome() {
-        axios.get(`http://localhost:8000/addIncome?trackerid=${id}&it=${incomeType}&im=${money}`)
+        axios.get(`https://balancetrackerbackend.onrender.comaddIncome?trackerid=${id}&it=${incomeType}&im=${money}`)
         .then(response => {
                 // Check if the tracker creation was successful before redirecting
                 if (response.data.STATUS === "SUCCESS") {
