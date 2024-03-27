@@ -19,22 +19,11 @@
     let trackers = [];
     onMount(() => {
         onAuthStateChanged(firebase_auth, (user) => {
-            const xhr = new XMLHttpRequest();
-xhr.open("GET", `https://balancetrackerbackend.onrender.com/getTrackerFromOwnerId?ownerid=${user.uid}`);
-xhr.send();
-xhr.responseType = "json";
-xhr.onload = () => {
-  if (xhr.readyState == 4 && xhr.status == 200) {
-    const respones = JSON.parse(xhr.response.DATA)
-      
-    trackers = respones
-    console.log(trackers)
-  } else {
-    console.log(`Error: ${xhr.status}`);
-  }
-};
+          
 
-
+            axios.get(`https://balancetrackerbackend.onrender.com/getTrackerFromOwnerId?ownerid=${user.uid}`).then(function (response){
+                trackers = JSON.parse(response.data.DATA)
+            })
         })
       
     })
