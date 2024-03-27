@@ -21,7 +21,7 @@
         onAuthStateChanged(firebase_auth, (user) => {
           
 
-            axios.get(`https://balancetrackerbackend.onrender.com/getTrackerFromOwnerId?ownerid=${user.uid}`).then(function (response){
+        axios.get(`https://balancetrackerbackend.onrender.com/getTrackerFromOwnerId?ownerid=${user.uid}`).then(function (response){
                 trackers = JSON.parse(response.data.DATA)
             })
         })
