@@ -35,7 +35,7 @@
     });
 });
     function addIncome() {
-        axios.get(`https://balancetrackerbackend.onrender.comaddIncome?trackerid=${id}&it=${incomeType}&im=${money}`)
+        axios.get(`https://balancetrackerbackend.onrender.com/addIncome?trackerid=${id}&it=${incomeType}&im=${money}`)
         .then(response => {
                 // Check if the tracker creation was successful before redirecting
                 if (response.data.STATUS === "SUCCESS") {
