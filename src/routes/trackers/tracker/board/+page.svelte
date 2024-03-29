@@ -68,7 +68,7 @@
         <tbody>
             {#each acts as act}
             <tr> 
-                <th scope="row">{act.type}</th>
+                <th scope="row">{act.t}</th>
                 <th scope="row">{act.money}</th>
             
                
