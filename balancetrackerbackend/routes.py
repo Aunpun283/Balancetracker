@@ -40,7 +40,7 @@ def addExpense(request):
     em = int(request.GET.get("em"))  # expense money
 
     query = {"_id": ObjectId(trackerid)}
-    data2insert = {"type": "Expense", "et": et, "money": em}  
+    data2insert = {"type": "Expense", "t": et, "money": em}  
 
     try:
         result = trackers.find_one(query)
@@ -62,7 +62,7 @@ def addIncome(request):
     im = int(request.GET.get("im"))  # income money
 
     query = {"_id": ObjectId(trackerid)}
-    data2insert = {"type": "Income", "it": it, "money": im}  
+    data2insert = {"type": "Income", "t": it, "money": im}  
 
     try:
         result = trackers.find_one(query)
